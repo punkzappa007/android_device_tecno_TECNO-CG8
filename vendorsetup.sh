@@ -5,6 +5,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-add_lunch_combo twrp_TECNO-CG8-user
-add_lunch_combo twrp_TECNO-CG8-userdebug
-add_lunch_combo twrp_TECNO-CG8-eng
+add_lunch_combo twrp_CG8-user
+add_lunch_combo twrp_CG8-userdebug
+add_lunch_combo twrp_CG8-eng
