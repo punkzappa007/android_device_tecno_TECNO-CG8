@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/tecno/TECNO-CG8
+DEVICE_PATH := device/tecno/CG8
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -32,7 +32,7 @@ TARGET_BOARD_PLATFORM := mt6785
 PRODUCT_PLATFORM := mt6785
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := TECNO-CG8
+TARGET_OTA_ASSERT_DEVICE := CG8
 
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
