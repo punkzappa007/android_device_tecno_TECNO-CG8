@@ -6,4 +6,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_TECNO-CG8.mk
+    $(LOCAL_DIR)/twrp_CG8.mk
