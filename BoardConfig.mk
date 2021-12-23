@@ -148,6 +148,10 @@ TARGET_USES_MKE2FS := true
 # This **causes** AVB errors when reflashing MIUI
 TW_NO_AUTOREFLASH := true 
 
+# Padding
+TW_Y_OFFSET := 90
+TW_H_OFFSET := -90
+
 # Device config
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
