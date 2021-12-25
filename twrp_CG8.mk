@@ -24,3 +24,8 @@ PRODUCT_NAME := twrp_CG8
 PRODUCT_BRAND := TECNO
 PRODUCT_MODEL := TECNO CG8
 PRODUCT_MANUFACTURER := tecno
+
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
+
