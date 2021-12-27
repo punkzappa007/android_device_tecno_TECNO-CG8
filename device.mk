@@ -51,11 +51,7 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-mtkimpl.recovery \
-    android.hardware.boot@1.1-mtkimpl
-
-PRODUCT_PACKES += \
-    bootctrl
+    android.hardware.boot@1.1-impl
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -64,7 +60,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
-
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
