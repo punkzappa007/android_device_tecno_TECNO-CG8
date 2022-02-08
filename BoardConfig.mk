@@ -161,3 +161,23 @@ TW_HAS_NO_RECOVERY_PARTITION := true
 # Decryption
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
+
+# SkyHawk Flags
+SHRP_DEVICE_CODE := CG8
+SHRP_PATH := device/tecno/$(SHRP_DEVICE_CODE)
+SHRP_MAINTAINER := punkzappa007
+SHRP_REC_TYPE := SAR
+SHRP_DEVICE_TYPE := A/B
+SHRP_REC := /dev/block/bootdevice/by-name/boot
+SHRP_EDL_MODE := 0
+SHRP_INTERNAL := /sdcard
+SHRP_EXTERNAL := /external_sd
+SHRP_OTG := /usb_otg
+SHRP_FLASH := 0
+SHRP_AB := true
+SHRP_NOTCH := true
+SHRP_EXPRESS_USE_DATA := true
+SHRP_DARK := true
+SHRP_NO_SAR_AUTOMOUNT := true
+SHRP_LITE := true
+
