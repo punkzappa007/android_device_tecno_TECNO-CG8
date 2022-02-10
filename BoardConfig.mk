@@ -113,11 +113,15 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
-    libpuresoftkeymasterdevice
+    libpuresoftkeymasterdevice \
+    ashmemd_aidl_interface-cpp \
+    libashmemd_client
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
@@ -163,6 +167,13 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # SkyHawk Flags
+SHRP_CUSTOM_FLASHLIGHT := true
+SHRP_FONP_1 := /sys/devices/virtual/torch/torch/torch_level
+
+# Max brightness of flashlight
+# you can also check the above led paths in Android when you turn on flashlight
+SHRP_FLASH_MAX_BRIGHTNESS := 200
+
 SHRP_DEVICE_CODE := CG8
 SHRP_PATH := device/tecno/$(SHRP_DEVICE_CODE)
 SHRP_MAINTAINER := punkzappa007
@@ -173,7 +184,7 @@ SHRP_EDL_MODE := 0
 SHRP_INTERNAL := /sdcard
 SHRP_EXTERNAL := /external_sd
 SHRP_OTG := /usb_otg
-SHRP_FLASH := 0
+SHRP_FLASH := 1
 SHRP_AB := true
 SHRP_NOTCH := true
 SHRP_EXPRESS_USE_DATA := true
