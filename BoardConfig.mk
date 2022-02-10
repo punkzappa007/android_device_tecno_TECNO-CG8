@@ -169,10 +169,10 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 # SkyHawk Flags
 SHRP_CUSTOM_FLASHLIGHT := true
 SHRP_FONP_1 := /sys/devices/virtual/torch/torch/torch_level
-
+SHRP_FONP_2 := "/sys/devices/virtual/torch/torch/torch_level"
 # Max brightness of flashlight
 # you can also check the above led paths in Android when you turn on flashlight
-SHRP_FLASH_MAX_BRIGHTNESS := 200
+SHRP_FLASH_MAX_BRIGHTNESS := 1
 
 SHRP_DEVICE_CODE := CG8
 SHRP_PATH := device/tecno/$(SHRP_DEVICE_CODE)
