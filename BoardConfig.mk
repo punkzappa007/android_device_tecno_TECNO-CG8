@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/tecno/CG8
+DEVICE_PATH := device/TECNO/CG8
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -148,8 +148,8 @@ TARGET_USES_MKE2FS := true
 TW_NO_AUTOREFLASH := true 
 
 # Padding
-TW_Y_OFFSET := 100
-TW_H_OFFSET := -100
+#TW_Y_OFFSET := 100
+#TW_H_OFFSET := -100
 
 # Device config
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
@@ -171,6 +171,5 @@ PB_DISABLE_DEFAULT_TREBLE_COMP := true
 PB_DISABLE_DEFAULT_DM_VERITY := true
 PB_TORCH_PATH := /sys/devices/virtual/torch/torch/torch_level
 PB_TORCH_MAX_BRIGHTNESS := 1
-
 
 
