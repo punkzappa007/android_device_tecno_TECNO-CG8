@@ -166,29 +166,11 @@ TW_HAS_NO_RECOVERY_PARTITION := true
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
-# SkyHawk Flags
-SHRP_CUSTOM_FLASHLIGHT := true
-SHRP_FONP_1 := /sys/devices/virtual/torch/torch/torch_level
-SHRP_FONP_2 := "/sys/devices/virtual/torch/torch/torch_level"
-# Max brightness of flashlight
-# you can also check the above led paths in Android when you turn on flashlight
-SHRP_FLASH_MAX_BRIGHTNESS := 1
+# PBRP Build Flags
+PB_DISABLE_DEFAULT_TREBLE_COMP := true
+PB_DISABLE_DEFAULT_DM_VERITY := true
+PB_TORCH_PATH := /sys/devices/virtual/torch/torch/torch_level
+PB_TORCH_MAX_BRIGHTNESS := 1
 
-SHRP_DEVICE_CODE := CG8
-SHRP_PATH := device/tecno/$(SHRP_DEVICE_CODE)
-SHRP_MAINTAINER := punkzappa007
-SHRP_REC_TYPE := SAR
-SHRP_DEVICE_TYPE := A/B
-SHRP_REC := /dev/block/bootdevice/by-name/boot
-SHRP_EDL_MODE := 0
-SHRP_INTERNAL := /sdcard
-SHRP_EXTERNAL := /external_sd
-SHRP_OTG := /usb_otg
-SHRP_FLASH := 1
-SHRP_AB := true
-SHRP_NOTCH := true
-SHRP_EXPRESS_USE_DATA := true
-SHRP_DARK := true
-SHRP_NO_SAR_AUTOMOUNT := true
-SHRP_LITE := true
+
 
