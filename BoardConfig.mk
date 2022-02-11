@@ -165,11 +165,3 @@ TW_HAS_NO_RECOVERY_PARTITION := true
 # Decryption
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
-
-# PBRP Build Flags
-PB_DISABLE_DEFAULT_TREBLE_COMP := true
-PB_DISABLE_DEFAULT_DM_VERITY := true
-PB_TORCH_PATH := /sys/devices/virtual/torch/torch/torch_level
-PB_TORCH_MAX_BRIGHTNESS := 1
-
-
