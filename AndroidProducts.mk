@@ -6,4 +6,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_CG8.mk
+     $(LOCAL_DIR)/omni_CG8.mk
+
+COMMON_LUNCH_CHOICES := omni_CG8-eng
