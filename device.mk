@@ -6,7 +6,9 @@
 #
 
 LOCAL_PATH := device/tecno/CG8
+# A/B support
 
+AB_OTA_UPDATER := true
 # A/B
 AB_OTA_PARTITIONS += \
     boot \
