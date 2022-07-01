@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/tecno/CG8
+LOCAL_PATH := device/TECNO/CG8
 
 # A/B
 AB_OTA_PARTITIONS += \
