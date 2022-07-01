@@ -24,7 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Inherit from CG8 device
-$(call inherit-product, device/tecno/CG8/device.mk)
+$(call inherit-product, device/TECNO/CG8/device.mk)
 
 # Inherit some common PBRP stuff.
 $(call inherit-product, vendor/pb/config/common.mk)
