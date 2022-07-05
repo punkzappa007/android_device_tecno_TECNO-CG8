@@ -4,10 +4,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-
 DEVICE_PATH := device/TECNO/CG8
 
-# For building with minimal manifest
+# Allow building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
@@ -35,15 +34,16 @@ PRODUCT_PLATFORM := mt6785
 TARGET_OTA_ASSERT_DEVICE := CG8
 
 # Kernel
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 twrpfastboot=1
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE += androidboot.force_normal_boot=1
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x07c08000
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 
 BOARD_KERNEL_IMAGE_NAME := kernel
 BOARD_BOOTIMG_HEADER_VERSION := 2
@@ -70,29 +70,30 @@ BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 3
 
+
 # System as root
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 
 # Partitions configs
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
 BOARD_USES_METADATA_PARTITION := true
 
 # Partitions size
-BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432
 
 # Dynamic Partitions
-BOARD_SUPER_PARTITION_SIZE := 9126805504
+BOARD_SUPER_PARTITION_SIZE := 6873469036
 BOARD_SUPER_PARTITION_GROUPS := main
 
 BOARD_MAIN_PARTITION_LIST := system vendor product system_ext
-BOARD_MAIN_SIZE := 4561305600
+BOARD_MAIN_SIZE := 6869274732 # (BOARD_SUPER_PARTITION_SIZE - 4MB)
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -109,28 +110,17 @@ TARGET_COPY_OUT_SYSTEM_EXT = system_ext
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libkeymaster4 \
-    libpuresoftkeymasterdevice \
-    ashmemd_aidl_interface-cpp \
-    libashmemd_client
-
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so
+    libpuresoftkeymasterdevice
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
-
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 ## TWRP-Specific configuration
 
@@ -145,16 +135,8 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 
-# Flag added by me but not in official TWRP sources
-# Will be submitted to gerrit
-#
-# Disables "Reflash TWRP after flashing a ROM" option (in both settings and zip install menu)
-# This **causes** AVB errors when reflashing MIUI
-TW_NO_AUTOREFLASH := true
-
-# Padding
-#TW_Y_OFFSET := 100
-#TW_H_OFFSET := -100
+# Properties
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Device config
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
@@ -166,6 +148,17 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_HAS_NO_RECOVERY_PARTITION := true
+
+BOARD_USES_MTK_HARDWARE := true
+
+TARGET_SCREEN_HEIGHT := 2460
+
+# Decryption
+TW_INCLUDE_CRYPTO := true
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # PB Torch
 PB_TORCH_PATH := "/sys/devices/virtual/torch/torch/torch_level"
